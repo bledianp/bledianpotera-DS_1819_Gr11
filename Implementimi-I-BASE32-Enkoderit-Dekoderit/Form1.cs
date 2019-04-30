@@ -169,7 +169,73 @@ namespace Implementimi_I_BASE32_Enkoderit_Dekoderit
 
         }
 
+            
+        static byte[] Dekodo(string base32String)
+        {
+           
+            if (base32String == null)
+            {
+                return null;
+            }
+          
+            else if (base32String == string.Empty)
+            {
+                return new byte[0];
+            }
 
+            
+            string base32StringUpperCase = base32String.ToUpperInvariant();
+
+            
+            byte[] outputBytes = new byte[base32StringUpperCase.Length * BllokuDales / MadhesiaBajtit];
+
+            
+            if (outputBytes.Length == 0)
+            {
+                throw new ArgumentException("Teksti nuk eshte valid sepse nuk ka te dhena per te konstruktuar bytearray");
+            }
+            int base32Position = 0;
+
+            int base32SubPosition = 0;
+            int outputBytePosition = 0;
+            int outputByteSubPosition = 0;
+
+            
+            while (outputBytePosition < outputBytes.Length)
+            {
+                
+                int currentBase32Byte = Base32Alphabet.IndexOf(base32StringUpperCase[base32Position]);
+
+               
+                if (currentBase32Byte < 0)
+                {
+                    throw new ArgumentException(string.Format("Teksti i dhene nuk eshte valid per Base32”, base32String[base32Position]));
+                }
+                int bitsAvailableInByte = Math.Min(BllokuDales - base32SubPosition, MadhesiaBajtit - outputByteSubPosition);
+
+               
+                outputBytes[outputBytePosition] <<= bitsAvailableInByte;
+
+                
+                outputBytes[outputBytePosition] |= (byte)(currentBase32Byte >> (BllokuDales - (base32SubPosition + bitsAvailableInByte)));
+                outputByteSubPosition += bitsAvailableInByte;
+                if (outputByteSubPosition >= MadhesiaBajtit)
+                {
+                    outputBytePosition++;
+                    outputByteSubPosition = 0;
+                }
+
+                
+                base32SubPosition += bitsAvailableInByte;
+                if (base32SubPosition >= BllokuDales)
+                {                  
+                    base32Position++;
+                    base32SubPosition = 0;
+                }
+            }
+
+            return outputBytes;
+        }
 
 
 
