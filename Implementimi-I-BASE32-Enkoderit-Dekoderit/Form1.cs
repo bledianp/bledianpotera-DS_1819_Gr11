@@ -204,7 +204,7 @@ namespace Implementimi_I_BASE32_Enkoderit_Dekoderit
             while (outputBytePosition < outputBytes.Length)
             {
                 
-                int currentBase32Byte = Base32Alphabet.IndexOf(base32StringUpperCase[base32Position]);
+                int currentBase32Byte = AlfabetiBASE32.IndexOf(base32StringUpperCase[base32Position]);
 
                
                 if (currentBase32Byte < 0)
