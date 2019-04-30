@@ -9,8 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-
-
 namespace Implementimi_I_BASE32_Enkoderit_Dekoderit
 {
     public partial class Form1 : Form
