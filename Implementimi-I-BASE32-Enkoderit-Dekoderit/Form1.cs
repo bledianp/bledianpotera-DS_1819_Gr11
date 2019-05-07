@@ -169,6 +169,14 @@ namespace Implementimi_I_BASE32_Enkoderit_Dekoderit
 
         }
 
+
+ private void btnDecode_Click(object sender, EventArgs e)
+        {
+            inputi = txtEncodedtext.Text;
+            TekstiDekoduar = Encoding.ASCII.GetString(Dekodo(inputi));
+            txtDecodedtext.Text = TekstiDekoduar;
+
+        }
             
         static byte[] Dekodo(string base32String)
         {
