@@ -217,7 +217,7 @@ namespace Implementimi_I_BASE32_Enkoderit_Dekoderit
                
                 if (currentBase32Byte < 0)
                 {
-                    throw new ArgumentException(string.Format("Teksti i dhene nuk eshte valid per Base32”, base32String[base32Position]));
+                    throw new ArgumentException(string.Format("Teksti i dhene nuk eshte valid per Base32", base32String[base32Position]));
                 }
                 int bitsAvailableInByte = Math.Min(BllokuDales - base32SubPosition, MadhesiaBajtit - outputByteSubPosition);
 
