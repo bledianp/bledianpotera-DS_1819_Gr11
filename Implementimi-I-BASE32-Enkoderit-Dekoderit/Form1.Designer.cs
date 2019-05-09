@@ -46,6 +46,7 @@
             this.btnDecode.TabIndex = 15;
             this.btnDecode.Text = "Decode";
             this.btnDecode.UseVisualStyleBackColor = true;
+            this.btnEncode.Click += new System.EventHandler(this.btnDecode_Click);
             // 
             // label3
             // 
